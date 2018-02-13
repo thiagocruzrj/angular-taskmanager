@@ -27,13 +27,17 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a id="logo" href="../Home/HomeIndex.html">
+                    <a id="logo" href="../../index.html">
                         <img src="../../images/taskManager-logo.png" alt="">
                     </a>
                 </li>
                 <li>
-                    <a class="side-bar-item" href="../Home/HomeIndex.html">
+                    <a class="side-bar-item" href="../../index.html">
                         <span class="fa fa-home"></span> Home</a>
+                </li>
+                <li>
+                    <a class="side-bar-item" href="../Home/HomeIndex.html">
+                        <span class="fa fa-tasks"></span> Controle de Tarefas</a>
                 </li>
                 <li>
                     <a class="side-bar-item" href="../Task/TaskIndex.html">
@@ -59,9 +63,8 @@
                 <hr>
                 <form class="form-inline" ng-init="Cats.verify(novaCategoria, catList, true)">
 
-                    <input id="user-input" type="text" class="form-control col-sm-4 mb-2 mb-sm-0"
-                    id="inlineFormInput" placeholder="Forneça um nome para a nova categoria..."
-                    data-ng-model="novaCategoria" ng-change="Cats.verify(novaCategoria, catList, false)">
+                    <input id="user-input" type="text" class="form-control col-sm-4 mb-2 mb-sm-0" id="inlineFormInput" placeholder="Forneça um nome para a nova categoria..."
+                        data-ng-model="novaCategoria" ng-change="Cats.verify(novaCategoria, catList, false)">
 
                     <button id="button-status" class="btn btn-info col-sm-8 mb-2 mb-sm-0">
                         <span class="fa fa-info-circle"> Cadastre aqui uma nova Categoria</span>

@@ -27,26 +27,21 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a id="logo" href="Home/HomeIndex.html">
+                    <a id="logo" href="index.html">
                         <img src="images/taskManager-logo.png" alt="">
                     </a>
                 </li>
                 <li>
-                    <a class="side-bar-item" href="Category/CategoryIndex.html">
+                    <a class="side-bar-item" href="WebView/Home/HomeIndex.html">
+                        <span class="fa fa-tasks"></span> Controle de Tarefas</a>
+                </li>
+                <li>
+                    <a class="side-bar-item" href="WebView/Category/CategoryIndex.html">
                         <span class="fa fa-plus"></span> Cadastrar Categoria</a>
                 </li>
                 <li>
-                    <a class="side-bar-item" href="Task/TaskIndex.html">
+                    <a class="side-bar-item" href="WebView/Task/TaskIndex.html">
                         <span class="fa fa-plus"></span> Cadastrar Tarefa</a>
-                </li>
-                <li class="organize-list side-bar-item" ng-init="organize = 'Categoria'">
-                    <a href="#" ng-click="organize = (organize == 'Categoria' ? 'Status' : 'Categoria')">
-                        <span class="fa fa-list-alt"></span> Visualizando por {{organize}}</a>
-                </li>
-                <li>
-                    <button class="btn input-filter side-bar-item fa fa-filter">
-                        <input class="input-filter" data-ng-model="filter" type="text" placeholder=" Filtrar Tarefa...">
-                    </button>
                 </li>
             </ul>
         </div>
@@ -70,4 +65,5 @@
         </div>
     </div>
 </body>
+
 </html>
