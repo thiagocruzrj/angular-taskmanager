@@ -11,7 +11,8 @@ $(document).ready(function () {
 
 angular.module("app", [])
     .controller('TaskController', TaskController)
-    .controller('CategoryController', CategoryController);
+    .controller('CategoryController', CategoryController)
+    .controller('IndexController', IndexController);
 
 function TaskController() {
     let self = this;
@@ -21,6 +22,21 @@ function TaskController() {
     self.cadTask = cadTask;
     self.removeTask = removeTask;
 }
+
+function CategoryController() {
+    let self = this;
+    self.categorias = category;
+    self.verify = verify;
+    self.addCategoria = addCategoria;
+    self.removeCategoria = removeCategoria;
+    self.eraseInput = eraseInput;
+}
+
+function IndexController(){
+    let self = this;
+    self.year = (new Date()).getFullYear();
+}
+
 function cadTask(tInput, cInput, tlist) {
     let info = $('#button-info');
     let submit = $('#button-submit');
@@ -114,15 +130,6 @@ let category = [
     { nome: 'Trabalho' },
     { nome: 'Faculdade' }
 ];
-
-function CategoryController() {
-    let self = this;
-    self.categorias = category;
-    self.verify = verify;
-    self.addCategoria = addCategoria;
-    self.removeCategoria = removeCategoria;
-    self.eraseInput = eraseInput;
-}
 
 function addCategoria(cat, categorias) {
     let but = $('#button-status');

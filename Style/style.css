@@ -106,7 +106,6 @@ div .input-filter{
 }
 
 .btn-info{
-  background: rgba(0, 89, 119, 0.8);
   text-shadow: 1px 1px 1px rgb(70, 70, 70);
 }
 
@@ -120,13 +119,9 @@ h2,h1,h3,h4,h5,h6{
   padding: 10px;
 }
 
-.btn-outline-info:hover{
-  text-shadow: none;
-}
-
 .btn-success{
   text-shadow: 1px 1px 1px rgb(0, 0, 0);
-  background: rgb(106, 236, 106);
+  background: rgb(27, 177, 27);
 }
 
 
