@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/i18n/angular-locale_pt-br.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../style/style.css">
+    <script src="../../Scripts/script.js"></script>
+    <title>TaskManager - Home</title>
+</head>
+
+<body data-ng-app="app">
+
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a id="logo" href="../Home/HomeIndex.html">
+                        <img src="../../images/taskManager-logo.png" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a class="side-bar-item" href="../Category/CategoryIndex.html">
+                        <span class="fa fa-plus"></span> Cadastrar Categoria</a>
+                </li>
+                <li>
+                    <a class="side-bar-item" href="../Task/TaskIndex.html">
+                        <span class="fa fa-plus"></span> Cadastrar Tarefa</a>
+                </li>
+                <li class="organize-list side-bar-item" ng-init="organize = 'Categoria'">
+                    <a href="#" ng-click="organize = (organize == 'Categoria' ? 'Status' : 'Categoria')">
+                        <span class="fa fa-list-alt"></span> Visualizando por {{organize}}</a>
+                </li>
+                <li>
+                    <button class="btn input-filter side-bar-item fa fa-filter">
+                        <input class="input-filter" data-ng-model="filter" type="text" placeholder=" Filtrar Tarefa...">
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <div id="page-content-wrapper" data-ng-controller="TaskController as Tasks">
+            <div class="pos-f-t">
+                <nav class="navbar-inverse bg-inverse">
+                    <div class="container container-fluid">
+                        <button href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">
+                            <span class="fa fa-navicon"></span>
+                        </button>
+                        <button class="btn btn-secondary input-filter fa fa-filter float-right">
+                            <input data-ng-model="filter" type="text" placeholder=" Filtrar Tarefa...">
+                        </button>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="container main" ng-init="tasksList = Tasks.tarefas" data-ng-controller="CategoryController as Cats">
+                <h1>Controle de Tarefas</h1>
+                <hr>
+                <div class="btn-group float-right">
+                    <button href="#" class="btn btn-info menu-item" ng-click="organize = (organize == 'Categoria' ? 'Status' : 'Categoria')">
+                        <span class="fa fa-list-alt"></span> Visualizando por {{organize}}
+                    </button>
+                </div>
+                <div ng-if="organize == 'Status'" ng-repeat="stat in Tasks.status">
+                    <label class="table-title" ng-init="statTitle = stat.nome ? 'Realizadas' : 'Pendentes'">Tarefas {{ statTitle }}</label>
+                    <table class="table table-inverse">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="fa fa-check"></span> Tarefa Realizada</th>
+                                <th>
+                                    <span class="fa fa-edit"></span> Tarefa</th>
+                                <th>
+                                    <span class="fa fa-list-alt"></span> Categoria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="task in tasksList | filter:filter" ng-if="task.feito == stat.nome">
+                                <td>
+                                    <input ng-if="task.feito == true" checked type="checkbox" ng-click="task.feito = !(task.feito)"></input>
+                                    <input ng-if="task.feito == false" type="checkbox" ng-click="task.feito = !(task.feito)"></input>
+                                </td>
+                                <td>
+                                    <strike ng-if="task.feito == true">{{ task.nome }}</strike>
+                                    <span ng-if="task.feito == false">{{ task.nome }}</span>
+                                </td>
+                                <td>
+                                    <strike ng-if="task.feito == true">{{ task.categoria }}</strike>
+                                    <span ng-if="task.feito == false">{{ task.categoria }}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div ng-if="organize == 'Categoria'" ng-repeat="categoria in Cats.categorias">
+                    <label class="table-title">{{categoria.nome}}</label>
+                    <table class="table table-inverse">
+                        <span>{{ teste }}</span>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="fa fa-check"></span> Tarefa Realizada</th>
+                                <th>
+                                    <span class="fa fa-edit"></span> Tarefa</th>
+                                <th>
+                                    <span class="fa fa-list-alt"></span> Categoria</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="task in tasksList | filter:filter" ng-if="task.categoria == categoria.nome">
+                                <td>
+                                    <input ng-if="task.feito == true" checked type="checkbox" ng-click="task.feito = !(task.feito)"></input>
+                                    <input ng-if="task.feito == false" type="checkbox" ng-click="task.feito = !(task.feito)"></input>
+                                </td>
+                                <td>
+                                    <strike ng-if="task.feito == true">{{ task.nome }}</strike>
+                                    <span ng-if="task.feito == false">{{ task.nome}}</span>
+                                </td>
+                                <td>
+                                    <strike ng-if="task.feito == true">{{ task.categoria }}</strike>
+                                    <span ng-if="task.feito == false">{{ task.categoria }}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
