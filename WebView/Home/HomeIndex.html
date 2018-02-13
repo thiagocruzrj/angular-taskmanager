@@ -58,9 +58,6 @@
                         <button href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">
                             <span class="fa fa-navicon"></span>
                         </button>
-                        <button class="btn btn-secondary input-filter fa fa-filter float-right">
-                            <input data-ng-model="filter" type="text" placeholder=" Filtrar Tarefa...">
-                        </button>
                     </div>
                 </nav>
             </div>
@@ -69,6 +66,9 @@
                 <h1>Controle de Tarefas</h1>
                 <hr>
                 <div class="btn-group float-right">
+                    <button class="btn btn-info input-filter fa fa-filter float-right">
+                        <input data-ng-model="filter" type="text" placeholder=" Filtrar Tarefa...">
+                    </button>
                     <button href="#" class="btn btn-info menu-item" ng-click="organize = (organize == 'Categoria' ? 'Status' : 'Categoria')">
                         <span class="fa fa-list-alt"></span> Visualizando por {{organize}}
                     </button>
