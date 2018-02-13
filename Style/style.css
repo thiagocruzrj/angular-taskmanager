@@ -4,6 +4,24 @@ body{
     background: url('../images/background.jpg') no-repeat;
 }
 
+a.taskmanager{
+  text-decoration: none;
+  display: none;
+}
+
+.task-logo{
+  color: white;
+}
+
+.task-logo, .manager-logo{
+  font-size: 1.5em;
+  text-shadow: 1px 1px 1px black;
+}
+
+.manager-logo{
+  color: lightgreen;
+}
+
 .btn-secondary{
   background: rgba(255, 255, 255, 0.8);
   color: rgb(0, 0, 0);
@@ -77,10 +95,6 @@ div .input-filter{
   background: rgba(0, 0, 0, 0.8) !important;
 }
 
-a#logo{
-  margin-bottom: 20px;
-}
-
 .form-inline{
   margin-top: 30px;
   margin-bottom: 20px;
@@ -92,6 +106,7 @@ a#logo{
 }
 
 .btn-info{
+  background: rgba(0, 89, 119, 0.8);
   text-shadow: 1px 1px 1px rgb(70, 70, 70);
 }
 
@@ -105,13 +120,13 @@ h2,h1,h3,h4,h5,h6{
   padding: 10px;
 }
 
-.btn-outline-info{
-  color: white;
-  text-shadow: 1px 1px 1px black;
-}
-
 .btn-outline-info:hover{
   text-shadow: none;
+}
+
+.btn-success{
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  background: rgb(106, 236, 106);
 }
 
 
@@ -119,10 +134,10 @@ h2,h1,h3,h4,h5,h6{
 
 #wrapper {
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
   }
   
   #wrapper.toggled {
@@ -138,10 +153,10 @@ h2,h1,h3,h4,h5,h6{
     margin-left: -250px;
     overflow-y: auto;
     background: rgba(0, 0, 0, 0.8);
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
   }
   
   #wrapper.toggled #sidebar-wrapper {
@@ -203,7 +218,6 @@ h2,h1,h3,h4,h5,h6{
   
   .sidebar-nav>.sidebar-brand {
     height: 65px;
-    font-size: 18px;
     line-height: 60px;
   }
   

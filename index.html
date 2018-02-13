@@ -27,8 +27,10 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a id="logo" href="index.html">
-                        <img src="images/taskManager-logo.png" alt="">
+                    <a href="index.html">
+                        <span class="fa fa-edit manager-logo"></span>
+                        <span class="task-logo">Task</span>
+                        <span class="manager-logo">Manager</span>
                     </a>
                 </li>
                 <li>
@@ -50,6 +52,11 @@
             <div class="pos-f-t">
                 <nav class="navbar-inverse bg-inverse">
                     <div class="container container-fluid">
+                        <a class="taskmanager" href="index.html">
+                            <span class="fa fa-edit manager-logo"></span>
+                            <span class="task-logo">Task</span>
+                            <span class="manager-logo">Manager</span>
+                        </a>
                         <button href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">
                             <span class="fa fa-navicon"></span>
                         </button>
@@ -58,30 +65,12 @@
             </div>
 
             <div class="container main">
-                <h1 class="text-center">Bem vindo ao TaskManager</h1>
+                <h1 class="text-center">Bem vindo ao<br>
+                    <span class="fa fa-edit manager-logo"></span>
+                    <span class="task-logo">Task</span>
+                    <span class="manager-logo">Manager</span>
+                </h1>
                 <hr>
-                <div class="col-12">
-                    <h2 class="text-center">Aqui você pode...</h2>
-
-                    <ul>
-                        <li>
-                            <h3>Gerenciar tarefas</h3>
-                        </li>
-                        <li>
-                            <h3>Criar categorias para as tarefas</h3>
-                        </li>
-                        <li>
-                            <h3>Criar tarefas por categorias</h3>
-                        </li>
-                    </ul>
-                    <div class="text-center align-items-center">
-                        <h3 class="text-center">Click no botão menu
-                            <button href="#menu-toggle" class="btn btn-secondary" id="menu-toggle"
-                            onclick="$('#menu-toggle').trigger('click')">
-                                <span class="fa fa-navicon"></span>
-                            </button> para começar...</h3>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

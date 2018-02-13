@@ -27,8 +27,10 @@
     <div id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <li class="sidebar-brand">
-          <a id="logo" href="../../index.html">
-            <img src="../../images/taskManager-logo.png" alt="">
+          <a class="taskmanager" href="../../index.html">
+            <span class="fa fa-edit manager-logo"></span>
+            <span class="task-logo">Task</span>
+            <span class="manager-logo">Manager</span>
           </a>
         </li>
         <li>
@@ -81,7 +83,7 @@
               Preencha os campos acima para cadastrar uma nova tarefa
             </span>
           </button>
-          <button id="button-submit" class="d-none" ng-click="Tasks.cadTask(tInput, tlist)">
+          <button id="button-submit" class="d-none" ng-click="Tasks.cadTask(tInput, cInput, tlist)">
             <span class="fa fa-plus-circle"></span> Cadastrar tarefa
           </button>
         </div>

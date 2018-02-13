@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    let time = setInterval(() => {
+        $('#menu-toggle').trigger('click');
+        clearInterval(time);
+    }, 300);
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -17,11 +21,15 @@ function TaskController() {
     self.cadTask = cadTask;
     self.removeTask = removeTask;
 }
-function cadTask(tInput, tlist) {
+function cadTask(tInput, cInput, tlist) {
     let info = $('#button-info');
     let submit = $('#button-submit');
     if (tInput && tlist) {
-        tlist.push({ nome: tInput });
+        tlist.push({
+            nome: tInput,
+            categoria: cInput,
+            feito: false
+        });
         submit.attr('class', 'd-none');
         $('.form-inline').css('border', 'none');
         info.attr('class', 'btn btn-success col-sm-12');
