@@ -21,7 +21,7 @@ function TaskController() {
     self.checkInput = checkInput;
     self.cadTask = cadTask;
     self.removeTask = removeTask;
-    self.dashstatus = statustarefa.initChartist;
+    self.showdash = statustarefa.initChartist;
 }
 
 function CategoryController() {
@@ -192,12 +192,11 @@ function eraseInput() {
 }
 
 let statustarefa = {
-    initChartist: function (taks) {
-        Chartist.Pie('#chartPreferences');
+    initChartist: function (taks, cats) {
+
         let total = taks.length;
         let pendentes = 0;
         let concluidas = 0;
-
         taks.forEach(t => {
             if (t.feito) {
                 concluidas++;
@@ -205,9 +204,29 @@ let statustarefa = {
                 pendentes++;
             }
         });
-        Chartist.Pie('#chartPreferences', {
+
+        Chartist.Pie('#dashstatus', {
             labels: [`${parseInt((concluidas / total) * 100)}%`, `${parseInt((pendentes / total) * 100)}%`],
             series: [(concluidas / total) * 100, (pendentes / total) * 100]
+        });
+        
+        cats.forEach(c => {
+            pendentes = 0;
+            concluidas = 0;
+            total = 0;
+            taks.forEach(t => {
+                if (t.feito && t.categoria == c.nome) {
+                    concluidas++;
+                    total++;
+                } else if (t.categoria == c.nome && t.feito == false) {
+                    pendentes++;
+                    total++;
+                }
+            });
+            Chartist.Pie(`#${c.nome}`, {
+                labels: [`${parseInt((concluidas / total) * 100)}%`, `${parseInt((pendentes / total) * 100)}%`],
+                series: [(concluidas / total) * 100, (pendentes / total) * 100]
+            });
         });
     }
 }

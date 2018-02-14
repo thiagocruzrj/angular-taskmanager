@@ -37,6 +37,10 @@ table{
   border-radius: 8px;
 }
 
+.tablefix{
+  max-width: 75% !important;
+}
+
 .table-title{
     margin-top: 20px;
     font-size: 2em;
@@ -130,10 +134,78 @@ h2,h1,h3,h4,h5,h6{
 
 .ct-series-a{
   fill: rgb(27, 177, 27);
+  background: rgb(27, 177, 27);
+  animation: animleft 1s;
+}
+
+.ct-series-a:hover, .ct-series-b:hover{
+  opacity: 1;
 }
 
 .ct-series-b{
   fill: rgb(255, 68, 0);
+  background: rgb(255, 68, 0);
+  animation: animrigth 1s;
+}
+
+.ct-series-a, .ct-series-b{
+  opacity: 0.8;
+  transform: scale3d(1,1,1);
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.ct-label{
+  transform: scale3d(1,1,1);
+  fill: white;
+  text-shadow: 1px 1px 1px black;
+  animation: animlabel 1s;
+}
+
+@-webkit-keyframes animleft {
+    0% {
+      transform: scale3d(0,1,0);
+      animation: initial;
+    }
+}
+
+@keyframes animleft {
+    0% {
+      transform: scale3d(0,1,0);
+      animation: initial;
+    }
+}
+@-webkit-keyframes animrigth {
+  0% {
+    transform: scale3d(2,1,0);
+    animation: initial;
+  }
+}
+
+@keyframes animrigth {
+  0% {
+    transform: scale3d(2,1,0);
+    animation: initial;
+  }
+}
+
+@-webkit-keyframes animlabel {
+  0% {
+    transform: scale3d(0,-1,0);
+    animation: initial;
+  }
+}
+
+@keyframes animlabel {
+  0% {
+    transform: scale3d(0,-1,0);
+    animation: initial;
+  }
 }
 
 /* SIDE MENU */
