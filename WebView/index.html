@@ -2,73 +2,73 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-        crossorigin="anonymous">
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/i18n/angular-locale_pt-br.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../Style/style.css">
-    <script src="../Scripts/script.js"></script>
-    <title>TaskManager - Home</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- STYLES -->
+  <link rel="stylesheet" href="../style/bootstrap4.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../style/style.css">
+  <!-- STYLES -->
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- SCRIPTS -->
+  <script src="../Scripts/jquery3.3.1.js"></script>
+  <script src="../Scripts/tether.js"></script>
+  <script src="../Scripts/bootstrap.min.js"></script>
+  <script src="../Scripts/angular.min.js"></script>
+  <script src="../Scripts/chartist.js"></script>
+  <script src="../Scripts/script.js"></script>
+  <!-- SCRIPTS -->
+  <title>TaskManager - Home</title>
 </head>
 
 <body data-ng-app="app">
 
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="index.html">
-                        <span class="fa fa-edit manager-logo"></span>
-                        <span class="task-logo">Task</span>
-                        <span class="manager-logo">Manager</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="side-bar-item" href="Home/HomeIndex.html">
-                        <span class="fa fa-tasks"></span> Controle de Tarefas</a>
-                </li>
-                <li>
-                    <a class="side-bar-item" href="Category/CategoryIndex.html">
-                        <span class="fa fa-plus"></span> Cadastrar Categoria</a>
-                </li>
-                <li>
-                    <a class="side-bar-item" href="Task/TaskIndex.html">
-                        <span class="fa fa-plus"></span> Cadastrar Tarefa</a>
-                </li>
-            </ul>
-        </div>
-
-        <div id="page-content-wrapper">
-            <div class="pos-f-t">
-                <nav class="navbar-inverse bg-inverse">
-                    <div class="container container-fluid">
-                        <button href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">
-                            <span class="fa fa-navicon"></span>
-                        </button>
-                    </div>
-                </nav>
-            </div>
-
-            <div class="container main" ng-controller="IndexController as IndexC">
-                <h1 class="text-center">Bem vindo ao
-                    <br>
-                    <span class="fa fa-edit manager-logo"></span>
-                    <span class="task-logo">Task</span>
-                    <span class="manager-logo">Manager</span>
-                </h1>
-            </div>
-        </div>
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="index.html">
+            <span class="fa fa-edit manager-logo"></span>
+            <span class="task-logo">Task</span>
+            <span class="manager-logo">Manager</span>
+          </a>
+        </li>
+        <li>
+          <a class="side-bar-item" href="Home/HomeIndex.html">
+            <span class="fa fa-tasks"></span> Controle de Tarefas</a>
+        </li>
+        <li>
+          <a class="side-bar-item" href="Category/CategoryIndex.html">
+            <span class="fa fa-plus"></span> Cadastrar Categoria</a>
+        </li>
+        <li>
+          <a class="side-bar-item" href="Task/TaskIndex.html">
+            <span class="fa fa-plus"></span> Cadastrar Tarefa</a>
+        </li>
+      </ul>
     </div>
+
+    <div id="page-content-wrapper">
+      <div class="pos-f-t">
+        <nav class="navbar-inverse bg-inverse">
+          <div class="container container-fluid">
+            <button href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">
+              <span class="fa fa-navicon"></span>
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      <div class="container main" ng-controller="IndexController as IndexC">
+        <h1 class="text-center">Bem vindo ao
+          <br>
+          <span class="fa fa-edit manager-logo"></span>
+          <span class="task-logo">Task</span>
+          <span class="manager-logo">Manager</span>
+        </h1>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
