@@ -21,6 +21,7 @@ function TaskController() {
     self.checkInput = checkInput;
     self.cadTask = cadTask;
     self.removeTask = removeTask;
+    self.dashstatus = statustarefa.initChartist;
 }
 
 function CategoryController() {
@@ -32,7 +33,7 @@ function CategoryController() {
     self.eraseInput = eraseInput;
 }
 
-function IndexController(){
+function IndexController() {
     let self = this;
     self.year = (new Date()).getFullYear();
 }
@@ -189,3 +190,25 @@ function verify(cat, categorias, def) {
 function eraseInput() {
     $('#user-input').val('');
 }
+
+let statustarefa = {
+    initChartist: function (taks) {
+        Chartist.Pie('#chartPreferences');
+        let total = taks.length;
+        let pendentes = 0;
+        let concluidas = 0;
+
+        taks.forEach(t => {
+            if (t.feito) {
+                concluidas++;
+            } else {
+                pendentes++;
+            }
+        });
+        Chartist.Pie('#chartPreferences', {
+            labels: [`${parseInt((concluidas / total) * 100)}%`, `${parseInt((pendentes / total) * 100)}%`],
+            series: [(concluidas / total) * 100, (pendentes / total) * 100]
+        });
+    }
+}
+

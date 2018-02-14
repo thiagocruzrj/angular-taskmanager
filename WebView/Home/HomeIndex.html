@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/i18n/angular-locale_pt-br.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../../Scripts/chartist.js"></script>
     <link rel="stylesheet" href="../../style/style.css">
     <script src="../../Scripts/script.js"></script>
     <title>TaskManager - Home</title>
@@ -68,10 +69,10 @@
                 </nav>
             </div>
 
-            <div class="container main" ng-init="tasksList = Tasks.tarefas" data-ng-controller="CategoryController as Cats">
+            <div class="container main" ng-init="tasksList = Tasks.tarefas" ng-readonly="Tasks.dashstatus(tasksList)" data-ng-controller="CategoryController as Cats">
                 <h2>CONTROLE DE TAREFAS</h2>
                 <hr>
-                <div class="btn-group float-right">
+                <div class="btn-group float-left col-9">
                     <button class="btn btn-success input-filter fa fa-filter float-right">
                         <input data-ng-model="filter" type="text" placeholder=" Filtrar Tarefa...">
                     </button>
@@ -79,69 +80,83 @@
                         <span class="fa fa-list-alt"></span> Visualizando por {{organize}}
                     </button>
                 </div>
-                <div ng-if="organize == 'Status'" ng-repeat="stat in Tasks.status">
-                    <label class="table-title" ng-init="statTitle = stat.nome ? 'Realizadas' : 'Pendentes'">Tarefas {{ statTitle }}</label>
-                    <table class="table table-inverse">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <span class="fa fa-check"></span> Tarefa Realizada</th>
-                                <th>
-                                    <span class="fa fa-edit"></span> Tarefa</th>
-                                <th>
-                                    <span class="fa fa-list-alt"></span> Categoria</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-ng-repeat="task in tasksList | filter:filter" ng-if="task.feito == stat.nome">
-                                <td>
-                                    <input ng-if="task.feito == true" checked type="checkbox" ng-click="task.feito = !(task.feito)"></input>
-                                    <input ng-if="task.feito == false" type="checkbox" ng-click="task.feito = !(task.feito)"></input>
-                                </td>
-                                <td>
-                                    <strike ng-if="task.feito == true">{{ task.nome }}</strike>
-                                    <span ng-if="task.feito == false">{{ task.nome }}</span>
-                                </td>
-                                <td>
-                                    <strike ng-if="task.feito == true">{{ task.categoria }}</strike>
-                                    <span ng-if="task.feito == false">{{ task.categoria }}</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
 
-                <div ng-if="organize == 'Categoria'" ng-repeat="categoria in Cats.categorias">
-                    <label class="table-title">{{categoria.nome}}</label>
-                    <table class="table table-inverse">
-                        <span>{{ teste }}</span>
-                        <thead>
-                            <tr>
-                                <th>
-                                    <span class="fa fa-check"></span> Tarefa Realizada</th>
-                                <th>
-                                    <span class="fa fa-edit"></span> Tarefa</th>
-                                <th>
-                                    <span class="fa fa-list-alt"></span> Categoria</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-ng-repeat="task in tasksList | filter:filter" ng-if="task.categoria == categoria.nome">
-                                <td>
-                                    <input ng-if="task.feito == true" checked type="checkbox" ng-click="task.feito = !(task.feito)"></input>
-                                    <input ng-if="task.feito == false" type="checkbox" ng-click="task.feito = !(task.feito)"></input>
-                                </td>
-                                <td>
-                                    <strike ng-if="task.feito == true">{{ task.nome }}</strike>
-                                    <span ng-if="task.feito == false">{{ task.nome}}</span>
-                                </td>
-                                <td>
-                                    <strike ng-if="task.feito == true">{{ task.categoria }}</strike>
-                                    <span ng-if="task.feito == false">{{ task.categoria }}</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="float-left col-9">
+                    <div ng-if="organize == 'Status'" ng-repeat="stat in Tasks.status">
+                        <label class="table-title" ng-init="statTitle = stat.nome ? 'Realizadas' : 'Pendentes'">Tarefas {{ statTitle }}</label>
+                        <table class="table table-inverse">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span class="fa fa-check"></span> Tarefa Realizada</th>
+                                    <th>
+                                        <span class="fa fa-edit"></span> Tarefa</th>
+                                    <th>
+                                        <span class="fa fa-list-alt"></span> Categoria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="task in tasksList | filter:filter" ng-if="task.feito == stat.nome">
+                                    <td>
+                                        <input ng-if="task.feito == true" checked type="checkbox" ng-click="task.feito = !(task.feito); Tasks.dashstatus(tasksList)"></input>
+                                        <input ng-if="task.feito == false" type="checkbox" ng-click="task.feito = !(task.feito); Tasks.dashstatus(tasksList)"></input>
+                                    </td>
+                                    <td>
+                                        <strike ng-if="task.feito == true">{{ task.nome }}</strike>
+                                        <span ng-if="task.feito == false">{{ task.nome }}</span>
+                                    </td>
+                                    <td>
+                                        <strike ng-if="task.feito == true">{{ task.categoria }}</strike>
+                                        <span ng-if="task.feito == false">{{ task.categoria }}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div ng-if="organize == 'Categoria'" ng-repeat="categoria in Cats.categorias">
+                        <label class="table-title">{{categoria.nome}}</label>
+                        <table class="table table-inverse">
+                            <span>{{ teste }}</span>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <span class="fa fa-check"></span> Tarefa Realizada</th>
+                                    <th>
+                                        <span class="fa fa-edit"></span> Tarefa</th>
+                                    <th>
+                                        <span class="fa fa-list-alt"></span> Categoria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="task in tasksList | filter:filter" ng-if="task.categoria == categoria.nome">
+                                    <td>
+                                        <input ng-if="task.feito == true" checked type="checkbox" ng-click="task.feito = !(task.feito); Tasks.dashstatus(tasksList)"></input>
+                                        <input ng-if="task.feito == false" type="checkbox" ng-click="task.feito = !(task.feito); Tasks.dashstatus(tasksList)"></input>
+                                    </td>
+                                    <td>
+                                        <strike ng-if="task.feito == true">{{ task.nome }}</strike>
+                                        <span ng-if="task.feito == false">{{ task.nome}}</span>
+                                    </td>
+                                    <td>
+                                        <strike ng-if="task.feito == true">{{ task.categoria }}</strike>
+                                        <span ng-if="task.feito == false">{{ task.categoria }}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-3 float-right">
+                    <div class="content">
+                        <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                        <div class="footer mt-2">
+                            <div class="legend text-center">
+                                <i class="fa fa-circle text-success"></i> Concluidas
+                                <i class="fa fa-circle text-warning"></i> Pendentes
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

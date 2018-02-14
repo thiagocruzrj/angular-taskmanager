@@ -124,6 +124,17 @@ h2,h1,h3,h4,h5,h6{
   background: rgb(27, 177, 27);
 }
 
+#chartPreferences{
+  max-height: 600px;
+}
+
+.ct-series-a{
+  fill: rgb(27, 177, 27);
+}
+
+.ct-series-b{
+  fill: rgb(255, 68, 0);
+}
 
 /* SIDE MENU */
 
@@ -267,6 +278,9 @@ h2,h1,h3,h4,h5,h6{
       display: block;
       float: none;
       padding: 0;
+    }
+    .float-left, .float-rigth{
+      float: none !important;
     }
 }
 
